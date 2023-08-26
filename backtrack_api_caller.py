@@ -11,7 +11,7 @@ if __name__ == '__main__':
     end_time = datetime.datetime.fromisoformat("2023-05-31T13:59:00.000")
     delta = datetime.timedelta(hours=1)
 
-    # Smallest possible delta to prevent start_time and end_time from being the same
+    # Smallest delta to prevent start_time and end_time overlap between segments
     epsilon = datetime.timedelta(minutes=1)
 
     # if enable, each request will be sent after user confirm
