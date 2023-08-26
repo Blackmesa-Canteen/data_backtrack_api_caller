@@ -1,4 +1,6 @@
 import datetime
+from time import sleep
+
 import requests
 import json
 
@@ -49,12 +51,15 @@ if __name__ == '__main__':
             # Check the response for errors
             if response.json()['message'] == 'success':
                 print(f"Success for segment {segment['startTime']} to {segment['endTime']}")
+                sleep(10)
             else:
                 print(f"Error for segment {segment['startTime']} to {segment['endTime']}: {response.text}")
                 failed_requests.append(segment)  # Add failed segment to the list
+                sleep(60)  # Wait for 60 seconds before next request
         except Exception as e:
             print(f"Exception for segment {segment['startTime']} to {segment['endTime']}: {e}")
             failed_requests.append(segment)  # Add failed segment to the list
+            sleep(60)  # Wait for 60 seconds before next request
 
     print("All segments processed!")
 
