@@ -6,18 +6,17 @@ import json
 
 if __name__ == '__main__':
 
-    # Initial parameters
+    ################ CONFIGURATION ################
     api_endpoint = "http://localhost:3001/buildingDataValueHourly/autoTriggerHourlyCalculation"
     site_name = "warehouse-dandenong-south"
     start_time = datetime.datetime.fromisoformat("2023-04-30T14:00:00.000")
     end_time = datetime.datetime.fromisoformat("2023-05-31T13:59:00.000")
     delta = datetime.timedelta(hours=1)
-
     # Smallest delta to prevent start_time and end_time overlap between segments
     epsilon = datetime.timedelta(minutes=1)
-
     # if enable, each request will be sent after user confirm
     enable_manual_continue = True  # Set to True to enable manual input
+    ####################   END   #################
 
     # Generate time segments
     time_segments = []
