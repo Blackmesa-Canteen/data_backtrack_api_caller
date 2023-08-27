@@ -11,6 +11,8 @@ end_time = datetime.datetime.fromisoformat("2023-05-31T13:59:00.000")
 delta = datetime.timedelta(hours=1)
 epsilon = datetime.timedelta(minutes=1)
 num_threads = 5  # Number of threads to use
+
+
 ####################   END   #################
 
 def worker(segment_queue, failed_reqs, failed_reqs_lock):
@@ -30,6 +32,7 @@ def worker(segment_queue, failed_reqs, failed_reqs_lock):
                 print(f"Failed request for segment: {failed_segment['startTime']} to {failed_segment['endTime']}")
 
         segment_queue.task_done()  # Mark the task as done in the queue
+
 
 if __name__ == '__main__':
     segments_queue = Queue()
